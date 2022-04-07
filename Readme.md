@@ -18,6 +18,12 @@
       - [**Omega Notation (Ω-notation)**](#omega-notation-ω-notation)
     - [3.3.2 **Divide and Conquer.**](#332-divide-and-conquer)
     - [3.2.3. **Maximum subarray problems**](#323-maximum-subarray-problems)
+  - [3.4. **Day 4 [07/04/2021]**](#34-day-4-07042021)
+    - [3.4.1. **Straseen's Matrix**](#341-straseens-matrix)
+    - [3.4.1. **How to solve recursion and find complexity**](#341-how-to-solve-recursion-and-find-complexity)
+      - [**Substitution Method**](#substitution-method)
+      - [**Tree Method**](#tree-method)
+      - [**Master Theorem**](#master-theorem)
   
 
 # 2. **Algorithms List**
@@ -26,8 +32,8 @@
 |---|---|---|---|---|
 | Insertion Sort | O(n^2)   |O(1)   | [Inserion Sort](./Algos/InsertionSort.py)  |Day1|
 | Merge Sort | O(n^2)   |O(n)   | [Merge Sort](./Algos/MergeSort.py)  |Day2|
-| Maximum Subarray Recusive | O(n^2)   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
-| Maximum Subarray Linear | O(n)   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day4|
+| Maximum Subarray Recusive | O(nlog(n))   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
+| Maximum Subarray Linear | O(n)   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
 
 # 3. **Learning from Coremen book.**
 
@@ -46,7 +52,7 @@ In this the key A[n] is inserted in the already sorted array A[1..n-1] so that t
 ## 3.2. **Day 2[05/04/2022]**
 ### 3.2.1. **Revised how prove the completness of an algorithm**
 
-Following three needs to be insured that and algorithm is complete
+Following three needs to be insured to prove completness of a algorithm 
 1. Initialization
 2. Maintenance
 3. Termination
@@ -119,4 +125,55 @@ Divide and conquer have mainly 3 parts.
 Revised the maximum subarray problem and learned the three ways to solve it.
 1. Brute force method having O(n^2) complexity
 2. Divide and Conquer method having O(nlogn) complexity
-3. Incremental method having O(n) complexity
+3. Incremental method having O(n) complexity 
+
+## 3.4. **Day 4 [07/04/2021]**
+
+### 3.4.1. **Straseen's Matrix**
+This is a matrix multiplication algorithm which is based on divide and conqure paradigm, In this the original matrix is divide into 4 equall parts and then the resulting matrix is calulated using some formulas.
+
+But rather than having 8 n*n multiplications it only does 7 and hence get an time compleity of O(n^ln(7)) lesser then O(n^3).
+
+I dont understand it properly and will come back to it again if required.
+
+### 3.4.1. **How to solve recursion and find complexity**
+
+There are three method to solve recursions.
+
+#### **Substitution Method**
+In this we first guess what might be the complexity of the algorithm and based on that we prove that it might be right using mathematical induction.
+
+#### **Tree Method**
+This is not exacly a method to find the complexity of the algorithm but it help us at guessing what it might be. This is a visual way in which we represent the recurssion in the form of a tree.
+
+For example:
+
+> For a recurssion  T(n) = a*T(n/b) + f(n)
+> 
+> In the tree representation the root node is  the extra complexity attached with the i.e f(n) 
+>
+> The leaf nodes represent the base case generally a contant time complexity o(1) 
+>
+>And there are total ln(b) levels
+>
+> See image below for better understanding. 
+![Tree Recursion](images/tree_recursion.png)
+
+We sum the cost of all the levels which is then proper guess at the time complexity of algoritm
+
+#### **Master Theorem**
+
+This method is used to calculate the time complexity of a recursion in for of:<br>
+>T(n) = a*T(n/b) + f(n)
+
+It have three rules.
+
+First make another function G(n) such that:<br>
+> g(n) = n^ (logb(a))  [log a to the base b]
+
+Now Compare g(n) and f(n)
+
+1. If f(n) > g(n), Then the complexity if O(f(n))
+2. If g(n) > f(n), Then the complexity is O(g(n))
+3. Otherwise Both are same time, Then the complexity is O( log(n) * f(n) )
+ 

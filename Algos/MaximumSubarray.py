@@ -62,7 +62,7 @@ def linear_maximum_subarray(array):
     subarray in a given array 
 
     Time complexity: O(n)
-    Space complexity: O(n)
+    Space complexity: O(1)
 
     """
 
