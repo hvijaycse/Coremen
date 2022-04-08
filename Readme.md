@@ -31,7 +31,7 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
       - [4.3.1.1. **Theta Notation (Θ-notation)**](#4311-theta-notation-θ-notation)
       - [4.3.1.2. **Big Oh Notation (O-notation)**](#4312-big-oh-notation-o-notation)
       - [4.3.1.3. **Omega Notation (Ω-notation)**](#4313-omega-notation-ω-notation)
-    - [4.3.2. 3.3.2 **Divide and Conquer.**](#432-332-divide-and-conquer)
+    - [4.3.2. **Divide and Conquer.**](#432-divide-and-conquer)
     - [4.3.3. **Maximum subarray problems**](#433-maximum-subarray-problems)
   - [4.4. **Day 4 [07/04/2021]**](#44-day-4-07042021)
     - [4.4.1. **Straseen's Matrix**](#441-straseens-matrix)
@@ -39,6 +39,13 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
       - [4.4.2.1. **Substitution Method**](#4421-substitution-method)
       - [4.4.2.2. **Tree Method**](#4422-tree-method)
       - [4.4.2.3. **Master Theorem**](#4423-master-theorem)
+  - [4.5. **Day5 [08/04/2020]**](#45-day5-08042020)
+    - [4.5.1. **Heap**](#451-heap)
+      - [4.5.1.1. **Max Heap**](#4511-max-heap)
+      - [4.5.1.2. **Min Heap**](#4512-min-heap)
+    - [4.5.2. **Methods of a Heap**](#452-methods-of-a-heap)
+      - [4.5.2.1. **Max-heapify(A, i)**](#4521-max-heapifya-i)
+      - [4.5.2.2. **Build-Max-heap(A)**](#4522-build-max-heapa)
   
 
 # 3. **Algorithms List**
@@ -125,10 +132,10 @@ c1*g(n) <= f(n)  ,  Where n >= n' <br>
 
 This basically means that the function f is greater than g for suffeciently large n. Refer below image for more clear explanation.
 
-![Big Oh Notation](images/Omega.png) 
+![Big Oh Notation](images/Omega.png)    
 
 
-### 4.3.2. 3.3.2 **Divide and Conquer.**
+### 4.3.2. **Divide and Conquer.**
 Revied the divide and conque paradigm in chapter 4.
 
 Divide and conquer have mainly 3 parts. 
@@ -192,3 +199,61 @@ Now Compare g(n) and f(n)
 2. If g(n) > f(n), Then the complexity is O(g(n))
 3. Otherwise Both are same time, Then the complexity is O( log(n) * f(n) )
  
+
+## 4.5. **Day5 [08/04/2020]**
+Today I skipped chapter 5th form the book.<br>
+Started Sorting and order statistics.
+### 4.5.1. **Heap**
+Heap is the data structure which when visualised like a balanced binary tree.
+
+> Note: All the subtree in a heap are also a heap
+
+There are two type of heap: Max heap and Min heap.
+
+Heap uses three methods: Left, Right, Parent.
+Each of which take an index and return the index of left node, right node and parent node correspondingly.
+
+#### 4.5.1.1. **Max Heap**
+
+For all the elements in the heap A, max heap insured the following property:
+
+The A[i] >= A[left(i)] and A[i] >= A[right(i)]
+
+Hence the maximum element in a max heap is present at the root node. 
+> Note: A reverse sorted list is also and max heap
+
+
+#### 4.5.1.2. **Min Heap**
+
+For all the elements in the heap A, min heap insured the following property:
+
+The A[i] <= A[left(i)] and A[i] <= A[right(i)]
+
+Hence the minimum element in a min heap is present at the root node. 
+> Note: A sorted list is also and max heap
+
+
+### 4.5.2. **Methods of a Heap**
+> Note: Here I am only mentioning method for Max heap same methods also exists for min heap as well.
+
+#### 4.5.2.1. **Max-heapify(A, i)**
+This method asumme that the Left(i) and Right(i) subtree are also heap but the condition:
+
+A[i] >= A[ Left(i) ] and A[i] >= A[ Right(i) ]
+
+But be failing at index i hence the heap is not max heap.<br>
+So to solve this it check the condition if it it fulfilled it does nothing otherwise get the index largest element from left or right let it be j, then swap the A[i] with A[j] and recursively call the Max-heapify index j.
+
+It ensure that the condition is meet at index i.
+
+#### 4.5.2.2. **Build-Max-heap(A)**
+This method is used to create the heap meaning the condition is fulfilled at every index in the heap.
+
+It procedure is:
+```
+A.heap-size = A.length
+for i in [ A.length //2 .. 1]:
+  Call Max-heapify(A, i)
+
+```
+This start from bottom toward up because MAx-heapify assume that the Left and Right subtree are also max-heap which will be False if we go to top to bottom.
