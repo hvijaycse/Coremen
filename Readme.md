@@ -48,6 +48,13 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
       - [5.5.2.1. **Max-heapify(A, i)**](#5521-max-heapifya-i)
       - [5.5.2.2. **Build-Max-heap(A)**](#5522-build-max-heapa)
     - [5.5.3. **Sorting using heap**](#553-sorting-using-heap)
+  - [5.6. **Day 6 [09/04/2022]**](#56-day-6-09042022)
+    - [5.6.1. **Priority Queue**](#561-priority-queue)
+    - [5.6.2. **Methods of Max_heap**](#562-methods-of-max_heap)
+      - [5.6.2.1. **Heap_maximum**](#5621-heap_maximum)
+      - [5.6.2.2. **Heap_extract_max**](#5622-heap_extract_max)
+      - [5.6.2.3. **Heap_increase_key**](#5623-heap_increase_key)
+      - [5.6.2.4. **Max_heap_insert**](#5624-max_heap_insert)
   
 
 # 3. **Algorithms**
@@ -65,6 +72,7 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
 |Name  |Link  |Day |
 |---------|---------|---------|
 |Heap     | [max heap](DataStructure/Heap.py)       | Day 5        |
+|Priority Queue     | [max priority queue](DataStructure/PriorityQueue.py)       | Day 6        |
 
 # 5. **Learning from Coremen book.**
 
@@ -246,7 +254,7 @@ Hence the minimum element in a min heap is present at the root node.
 > Notes:
 > >Here I am only mentioning method for Max heap same methods also exists for min heap as well.
 >  
-> >All the algorithms mentioned for heap in this are based on 1 indexing and are implemented for 0 based indexing in the DataStructue directory.
+> >All the algorithms mentioned for heap in this are based on 1 indexing and are implemented for 0 based indexing in the DataStructure directory.
 
 #### 5.5.2.1. **Max-heapify(A, i)**
 This method asumme that the Left(i) and Right(i) subtree are also heap but the condition:
@@ -283,7 +291,7 @@ It procedure is:
 build_max_heap(array) ->
   length = array.size
   for index from length//2 to 1:
-    max_heaipfy(index)
+    max_heapify(array, index)
 ```
 This start from bottom toward up because MAx-heapify assume that the Left and Right subtree are also max-heap which will be False if we go to top to bottom.
 
@@ -297,5 +305,70 @@ heap_sort(array) ->
   for i from array.length to 2:
     swap(array[1], array[i])
     array.size -= 1
-    max_heapify(1)
+    max_heapify(array, 1)
+```
+Heap sort has time complexity of O(nlog(n)) but a better implementation of qiuck sort has lower constant coeffecient hence resulting in faster performance.<br>
+
+## 5.6. **Day 6 [09/04/2022]**
+
+### 5.6.1. **Priority Queue**
+Heap is an amazing data structure and can also be used to implement priority queue which have many use cases such as job scheduling based on priorty, etc.
+
+Same as heap priorty queue is also of 2 types:
+1. Max priority queue
+2. Min priority queue
+   
+Here I am only explaining max priority but on similar basis min prority can also be implemented.
+
+### 5.6.2. **Methods of Max_heap**
+> Note:
+> > The algos shown in the document are based on 1 based indexing and are implemented on 0 based indexing in the DataStructure directory.
+
+#### 5.6.2.1. **Heap_maximum**
+This method return the maximum priority item in the queue.
+
+Algo:
+```
+heap_max(a) -> 
+  return a[1]
+```
+
+#### 5.6.2.2. **Heap_extract_max**
+This method pop the maximum priority item in the queue and also remove it from the queue.
+
+Algo:
+```
+heap_extract_maximum(a) ->
+  maximum = a[1]
+  swap(a[1], a[a.size])
+  a.size -= 1
+  max_heapify(a, 1)
+  return max
+```
+
+#### 5.6.2.3. **Heap_increase_key**
+This method increase the key of an item at index.
+
+Algo:
+```
+heap_increase_key(a, i, k):
+  if k < a[i]:
+    Error "Key is smaller can't insert"
+    exit
+
+  while i > 1 and a[parent(i)] < k:
+    a[i] = a[parent(i)]
+    i = parent(i)
+  a[i] = k
+```
+
+#### 5.6.2.4. **Max_heap_insert**
+This method is used to insert a new item in the heap.
+
+Algo:
+```
+max_heap_insert(a, key):
+  a.size += 1
+  a[a.size] = -inf
+  heap_increase_key(a, a.size, key)
 ```
