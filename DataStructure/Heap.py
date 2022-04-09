@@ -1,4 +1,4 @@
-from turtle import right
+from cmath import log
 from typing import List, Optional, Any, Dict
 
 
@@ -42,7 +42,7 @@ class Heap:
     def left(self, index: int) -> int:
         # return the index of left child in 
         # 0 based indexing.
-        return index << 1 + 1
+        return (index << 1) + 1
     
     def right(self, index: int) -> int:
         # Return the index of left child in
@@ -75,14 +75,37 @@ class Heap:
                 break
         
     def build_maxheap(self):
-        for index in range(self.length, -1, -1):
+        for index in range(self.length-1, -1, -1):
             self.max_heapify(index)
     
+    def vis_tree(self) -> None:
 
+        Spaces = self.length // 2
 
+        left = 0 
+        element = 1 
+        rows = int(log(self.length, 2).real) + 1
+        Total_elements = 0
+        for r in range(rows):
+            print(' '*Spaces, end='')
+            for index in range(left, left + element):
+                print(f"{self.array[index]:2} ", end=' ')
+            print()
+            Spaces -= 1
+            print(" "*(Spaces+1),end='')
+            for _ in range(element):
+                print('/\\', end='  ')
+            print()
+            Spaces -=1 
+            Total_elements += element
+            element = min(element * 2, self.length-Total_elements)
+            left = self.left(left)
 
 if __name__ == "__main__":
-    Array = [1,2,3,4,5]
+    '''
+    Test case for Heap
+    '''
+    Array = list(range(20))
 
     new_heap = Heap(Array)
 

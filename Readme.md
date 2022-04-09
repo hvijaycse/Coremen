@@ -17,38 +17,40 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
 
 - [1. **Introduction to Coremen**](#1-introduction-to-coremen)
 - [2. **Table of Content**](#2-table-of-content)
-- [3. **Algorithms List**](#3-algorithms-list)
-- [4. **Learning from Coremen book.**](#4-learning-from-coremen-book)
-  - [4.1. **Day 1 [04/04/2022]**](#41-day-1-04042022)
-    - [4.1.1. **Learned why algorithms are technology.**](#411-learned-why-algorithms-are-technology)
-    - [4.1.2. **Revised Insertion Sort**](#412-revised-insertion-sort)
-  - [4.2. **Day 2[05/04/2022]**](#42-day-205042022)
-    - [4.2.1. **Revised how prove the completness of an algorithm**](#421-revised-how-prove-the-completness-of-an-algorithm)
-    - [4.2.2. **Revised Merge sort**](#422-revised-merge-sort)
-    - [4.2.3. **Revised Divide and Conqure paradigm.**](#423-revised-divide-and-conqure-paradigm)
-  - [4.3. **Day 3 [06/04/2021]**](#43-day-3-06042021)
-    - [4.3.1. **Revised Asymtotic Notation**](#431-revised-asymtotic-notation)
-      - [4.3.1.1. **Theta Notation (Θ-notation)**](#4311-theta-notation-θ-notation)
-      - [4.3.1.2. **Big Oh Notation (O-notation)**](#4312-big-oh-notation-o-notation)
-      - [4.3.1.3. **Omega Notation (Ω-notation)**](#4313-omega-notation-ω-notation)
-    - [4.3.2. **Divide and Conquer.**](#432-divide-and-conquer)
-    - [4.3.3. **Maximum subarray problems**](#433-maximum-subarray-problems)
-  - [4.4. **Day 4 [07/04/2021]**](#44-day-4-07042021)
-    - [4.4.1. **Straseen's Matrix**](#441-straseens-matrix)
-    - [4.4.2. **How to solve recursion and find complexity**](#442-how-to-solve-recursion-and-find-complexity)
-      - [4.4.2.1. **Substitution Method**](#4421-substitution-method)
-      - [4.4.2.2. **Tree Method**](#4422-tree-method)
-      - [4.4.2.3. **Master Theorem**](#4423-master-theorem)
-  - [4.5. **Day5 [08/04/2020]**](#45-day5-08042020)
-    - [4.5.1. **Heap**](#451-heap)
-      - [4.5.1.1. **Max Heap**](#4511-max-heap)
-      - [4.5.1.2. **Min Heap**](#4512-min-heap)
-    - [4.5.2. **Methods of a Heap**](#452-methods-of-a-heap)
-      - [4.5.2.1. **Max-heapify(A, i)**](#4521-max-heapifya-i)
-      - [4.5.2.2. **Build-Max-heap(A)**](#4522-build-max-heapa)
+- [3. **Algorithms**](#3-algorithms)
+- [4. **Data Strucutres**](#4-data-strucutres)
+- [5. **Learning from Coremen book.**](#5-learning-from-coremen-book)
+  - [5.1. **Day 1 [04/04/2022]**](#51-day-1-04042022)
+    - [5.1.1. **Learned why algorithms are technology.**](#511-learned-why-algorithms-are-technology)
+    - [5.1.2. **Revised Insertion Sort**](#512-revised-insertion-sort)
+  - [5.2. **Day 2[05/04/2022]**](#52-day-205042022)
+    - [5.2.1. **Revised how prove the completness of an algorithm**](#521-revised-how-prove-the-completness-of-an-algorithm)
+    - [5.2.2. **Revised Merge sort**](#522-revised-merge-sort)
+    - [5.2.3. **Revised Divide and Conqure paradigm.**](#523-revised-divide-and-conqure-paradigm)
+  - [5.3. **Day 3 [06/04/2021]**](#53-day-3-06042021)
+    - [5.3.1. **Revised Asymtotic Notation**](#531-revised-asymtotic-notation)
+      - [5.3.1.1. **Theta Notation (Θ-notation)**](#5311-theta-notation-θ-notation)
+      - [5.3.1.2. **Big Oh Notation (O-notation)**](#5312-big-oh-notation-o-notation)
+      - [5.3.1.3. **Omega Notation (Ω-notation)**](#5313-omega-notation-ω-notation)
+    - [5.3.2. **Divide and Conquer.**](#532-divide-and-conquer)
+    - [5.3.3. **Maximum subarray problems**](#533-maximum-subarray-problems)
+  - [5.4. **Day 4 [07/04/2021]**](#54-day-4-07042021)
+    - [5.4.1. **Straseen's Matrix**](#541-straseens-matrix)
+    - [5.4.2. **How to solve recursion and find complexity**](#542-how-to-solve-recursion-and-find-complexity)
+      - [5.4.2.1. **Substitution Method**](#5421-substitution-method)
+      - [5.4.2.2. **Tree Method**](#5422-tree-method)
+      - [5.4.2.3. **Master Theorem**](#5423-master-theorem)
+  - [5.5. **Day5 [08/04/2020]**](#55-day5-08042020)
+    - [5.5.1. **Heap**](#551-heap)
+      - [5.5.1.1. **Max Heap**](#5511-max-heap)
+      - [5.5.1.2. **Min Heap**](#5512-min-heap)
+    - [5.5.2. **Methods of a Heap**](#552-methods-of-a-heap)
+      - [5.5.2.1. **Max-heapify(A, i)**](#5521-max-heapifya-i)
+      - [5.5.2.2. **Build-Max-heap(A)**](#5522-build-max-heapa)
+    - [5.5.3. **Sorting using heap**](#553-sorting-using-heap)
   
 
-# 3. **Algorithms List**
+# 3. **Algorithms**
 
 | Name  |Time Complexity   |Space Complexity   |Link   | Day|
 |---|---|---|---|---|
@@ -57,47 +59,54 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
 | Maximum Subarray Recusive | O(nlog(n))   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
 | Maximum Subarray Linear | O(n)   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
 
-# 4. **Learning from Coremen book.**
+# 4. **Data Strucutres**
 
-## 4.1. **Day 1 [04/04/2022]**
+
+|Name  |Link  |Day |
+|---------|---------|---------|
+|Heap     | [max heap](DataStructure/Heap.py)       | Day 5        |
+
+# 5. **Learning from Coremen book.**
+
+## 5.1. **Day 1 [04/04/2022]**
 Started Coremen from begining.
 
-### 4.1.1. **Learned why algorithms are technology.**
+### 5.1.1. **Learned why algorithms are technology.**
 Alogrithm are technology becuase just like using the right technology can save a lot of effort, time and resources. Using the right algorithm help us achive the same. As technology grows and evolve so does Algorihtms.
 
-### 4.1.2. **Revised Insertion Sort**
+### 5.1.2. **Revised Insertion Sort**
 Insertion sort is one of the most basic sorting algorithm. This is a incremental based algorithm.
 
 In this the key A[n] is inserted in the already sorted array A[1..n-1] so that the array A[1..n] is sorted.
 
 
-## 4.2. **Day 2[05/04/2022]**
-### 4.2.1. **Revised how prove the completness of an algorithm**
+## 5.2. **Day 2[05/04/2022]**
+### 5.2.1. **Revised how prove the completness of an algorithm**
 
 Following three needs to be insured to prove completness of a algorithm 
 1. Initialization
 2. Maintenance
 3. Termination
    
-### 4.2.2. **Revised Merge sort**
+### 5.2.2. **Revised Merge sort**
 Merge sort is an divied and conqure based sorting algorithm, which has time complexity of O(nlog(n)) and space complexity of O(n).
 
-### 4.2.3. **Revised Divide and Conqure paradigm.**
+### 5.2.3. **Revised Divide and Conqure paradigm.**
 Divide and conqure is one of the most used paradigm to solve problems in programming.<br>
 It relies on the recursion to divide the problem into subsets, solve them and combine the result of all the subset to provide the solution of the problem.<br>
 Recursion time complexity is solved using the Master theorem or Tree method, I  prefer the Tree method.
 
 
-## 4.3. **Day 3 [06/04/2021]**
+## 5.3. **Day 3 [06/04/2021]**
 
-### 4.3.1. **Revised Asymtotic Notation**
+### 5.3.1. **Revised Asymtotic Notation**
 
 In real world the exact precision of what is the runtime of an algorithms are not required.<br>
 Rather we use we express the effeciency or runtime of an algorithm based on the suffecient large number of input sizes to make only the growth of runtime relevant. We study the asymtotic efficiency of the algorithm. 
 
 We mostly use 3 type of notations to express algorithm.
 
-####  4.3.1.1. **Theta Notation (Θ-notation)**
+####  5.3.1.1. **Theta Notation (Θ-notation)**
 
 For a function f(n) its time complexity is Θ(g(n))<br>
 If and only if there exist two values c1 and c2 for all values of n greater than n' such that:<br>
@@ -107,7 +116,7 @@ This basically means that the function f is sandwiched between function g for su
 
 ![Theta Notaion](images/Theta.png "Theta notation visualised")
 
-####  4.3.1.2. **Big Oh Notation (O-notation)**
+####  5.3.1.2. **Big Oh Notation (O-notation)**
 
 For a function f(n) its time complexity is O(g(n))<br>
 If and only if there exist one value c1 for all values of n greater than n' such that:<br>
@@ -122,7 +131,7 @@ Refer below image for more clear explanation.
 
 ![Big Oh Notation](images/BigO.png) 
 
-####  4.3.1.3. **Omega Notation (Ω-notation)**
+####  5.3.1.3. **Omega Notation (Ω-notation)**
 
 For a function f(n) its time complexity is O(g(n))<br>
 If and only if there exist one value c1 for all values of n greater than n' such that:<br>
@@ -135,7 +144,7 @@ This basically means that the function f is greater than g for suffeciently larg
 ![Big Oh Notation](images/Omega.png)    
 
 
-### 4.3.2. **Divide and Conquer.**
+### 5.3.2. **Divide and Conquer.**
 Revied the divide and conque paradigm in chapter 4.
 
 Divide and conquer have mainly 3 parts. 
@@ -143,29 +152,29 @@ Divide and conquer have mainly 3 parts.
 2. Conquer: the subproblems by solving them reccursively. If the subproblem sizes are small enough then just solve the subproblems in a straightforward manner.
 3. Combine: the solutions to the subproblems into the solution for the original problem.
    
-### 4.3.3. **Maximum subarray problems**
+### 5.3.3. **Maximum subarray problems**
 Revised the maximum subarray problem and learned the three ways to solve it.
 1. Brute force method having O(n^2) complexity
 2. Divide and Conquer method having O(nlogn) complexity
 3. Incremental method having O(n) complexity 
 
-## 4.4. **Day 4 [07/04/2021]**
+## 5.4. **Day 4 [07/04/2021]**
 
-### 4.4.1. **Straseen's Matrix**
+### 5.4.1. **Straseen's Matrix**
 This is a matrix multiplication algorithm which is based on divide and conqure paradigm, In this the original matrix is divide into 4 equall parts and then the resulting matrix is calulated using some formulas.
 
 But rather than having 8 n*n multiplications it only does 7 and hence get an time compleity of O(n^ln(7)) lesser then O(n^3).
 
 I dont understand it properly and will come back to it again if required.
 
-### 4.4.2. **How to solve recursion and find complexity**
+### 5.4.2. **How to solve recursion and find complexity**
 
 There are three method to solve recursions.
 
-#### 4.4.2.1. **Substitution Method**
+#### 5.4.2.1. **Substitution Method**
 In this we first guess what might be the complexity of the algorithm and based on that we prove that it might be right using mathematical induction.
 
-#### 4.4.2.2. **Tree Method**
+#### 5.4.2.2. **Tree Method**
 This is not exacly a method to find the complexity of the algorithm but it help us at guessing what it might be. This is a visual way in which we represent the recurssion in the form of a tree.
 
 For example:
@@ -176,14 +185,14 @@ For example:
 >
 > The leaf nodes represent the base case generally a contant time complexity o(1) 
 >
->And there are total ln(b) levels
+>And there are total ln(b) + 1 levels
 >
 > See image below for better understanding. 
 ![Tree Recursion](images/tree_recursion.png)
 
 We sum the cost of all the levels which is then proper guess at the time complexity of algoritm
 
-#### 4.4.2.3. **Master Theorem**
+#### 5.4.2.3. **Master Theorem**
 
 This method is used to calculate the time complexity of a recursion in for of:<br>
 >T(n) = a*T(n/b) + f(n)
@@ -200,10 +209,10 @@ Now Compare g(n) and f(n)
 3. Otherwise Both are same time, Then the complexity is O( log(n) * f(n) )
  
 
-## 4.5. **Day5 [08/04/2020]**
-Today I skipped chapter 5th form the book.<br>
+## 5.5. **Day5 [08/04/2020]**
+Today I skipped chapter 5th from the book.<br>
 Started Sorting and order statistics.
-### 4.5.1. **Heap**
+### 5.5.1. **Heap**
 Heap is the data structure which when visualised like a balanced binary tree.
 
 > Note: All the subtree in a heap are also a heap
@@ -213,7 +222,7 @@ There are two type of heap: Max heap and Min heap.
 Heap uses three methods: Left, Right, Parent.
 Each of which take an index and return the index of left node, right node and parent node correspondingly.
 
-#### 4.5.1.1. **Max Heap**
+#### 5.5.1.1. **Max Heap**
 
 For all the elements in the heap A, max heap insured the following property:
 
@@ -223,7 +232,7 @@ Hence the maximum element in a max heap is present at the root node.
 > Note: A reverse sorted list is also and max heap
 
 
-#### 4.5.1.2. **Min Heap**
+#### 5.5.1.2. **Min Heap**
 
 For all the elements in the heap A, min heap insured the following property:
 
@@ -233,27 +242,60 @@ Hence the minimum element in a min heap is present at the root node.
 > Note: A sorted list is also and max heap
 
 
-### 4.5.2. **Methods of a Heap**
-> Note: Here I am only mentioning method for Max heap same methods also exists for min heap as well.
+### 5.5.2. **Methods of a Heap**
+> Notes:
+> >Here I am only mentioning method for Max heap same methods also exists for min heap as well.
+>  
+> >All the algorithms mentioned for heap in this are based on 1 indexing and are implemented for 0 based indexing in the DataStructue directory.
 
-#### 4.5.2.1. **Max-heapify(A, i)**
+#### 5.5.2.1. **Max-heapify(A, i)**
 This method asumme that the Left(i) and Right(i) subtree are also heap but the condition:
 
 A[i] >= A[ Left(i) ] and A[i] >= A[ Right(i) ]
 
 But be failing at index i hence the heap is not max heap.<br>
-So to solve this it check the condition if it it fulfilled it does nothing otherwise get the index largest element from left or right let it be j, then swap the A[i] with A[j] and recursively call the Max-heapify index j.
+So to solve this it check the condition if it it fulfilled it does nothing otherwise get the index largest element from left or right let it be j, then swap the A[i] with A[j] and recursively call the Max-heapify index j.<br>
+Algorithm for this.
+```
+max_heapify(array, index) ->
+  largest_index = index
+  left_index = left(index)
+  right_index = right(index)
+
+  if left_index <= array.size and array[left_index] > array[largest_index]:
+    largest_index = left_index
+  
+  if right_index <= array.size and array[right_index] > array[largest_index]:
+    largest_index = right_index
+  
+  if largest_index != index:
+    swap(index, largest_index)
+    max_heapify(largest_index)
+```
 
 It ensure that the condition is meet at index i.
 
-#### 4.5.2.2. **Build-Max-heap(A)**
+#### 5.5.2.2. **Build-Max-heap(A)**
 This method is used to create the heap meaning the condition is fulfilled at every index in the heap.
 
 It procedure is:
 ```
-A.heap-size = A.length
-for i in [ A.length //2 .. 1]:
-  Call Max-heapify(A, i)
-
+build_max_heap(array) ->
+  length = array.size
+  for index from length//2 to 1:
+    max_heaipfy(index)
 ```
 This start from bottom toward up because MAx-heapify assume that the Left and Right subtree are also max-heap which will be False if we go to top to bottom.
+
+### 5.5.3. **Sorting using heap**
+Heap Structure can be for sorting as well.<br>
+Logic used in this process is that:
+
+```
+heap_sort(array) -> 
+  array = build_max_heap(array)
+  for i from array.length to 2:
+    swap(array[1], array[i])
+    array.size -= 1
+    max_heapify(1)
+```
