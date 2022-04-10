@@ -5,11 +5,11 @@ This is my attempt to learn and improve my Data Structures and Algorithms. I am 
 
 This is a really great book and also one of the most recommended, I have tried earlier to learn from this got partial success but was not able to complete it fully, hence attempting this again. 
 
-This time I am maintaining this repo, this is serve multiple purposes, some of them are.
+This time I am maintaining this repo, this serves multiple purposes, some of them are.
 
-- This serve are a record in which I can track my daily progress, my aim is to never miss reading the book on any day, but if that ever come I will record that too.
+- This serve as a record in which I can track my daily progress, my aim is to never miss reading the book on any day, but if that ever come I will record that too.
 - This will come useful in future for revision purposes. A small simple explanation with implementaton and images if suitable, I think this is will be enough.
-- This help me motivate to learn everyday. In the morning after I read the next concepts from the book, it takes me 15~20 minutes to udpate this repo and I like regularly updating my progress and see myself grow. This is my reward for learning daily. I learned this technique from the book **Atomic habit** and aimimng to get better 1% everyday with this.
+- This help me motivate to learn everyday. In the morning after I read the next concepts from the book, it takes me 15~20 minutes to udpate this repo and I like regularly updating my progress and see myself grow. This is my reward for learning daily. I learned this technique from the book **Atomic habit** and aiming to get better 1% everyday with this.
 - In case I get success, I will share this method/technique with other and utilize it more for myself.
 
  
@@ -55,6 +55,10 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
       - [5.6.2.2. **Heap_extract_max**](#5622-heap_extract_max)
       - [5.6.2.3. **Heap_increase_key**](#5623-heap_increase_key)
       - [5.6.2.4. **Max_heap_insert**](#5624-max_heap_insert)
+  - [5.7. **Day 7 [10/04/2022]**](#57-day-7-10042022)
+    - [5.7.1. **Quick Sort**](#571-quick-sort)
+    - [5.7.2. **Time complexity**](#572-time-complexity)
+    - [5.7.3. **Randomised Quick sort**](#573-randomised-quick-sort)
   
 
 # 3. **Algorithms**
@@ -65,6 +69,7 @@ This time I am maintaining this repo, this is serve multiple purposes, some of t
 | Merge Sort | O(n^2)   |O(n)   | [Merge Sort](./Algos/MergeSort.py)  |Day2|
 | Maximum Subarray Recusive | O(nlog(n))   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
 | Maximum Subarray Linear | O(n)   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
+| Quick Sort | O(nlog(n))   |O(1)   | [Quick Sort](./Algos/quicksort.py)  |Day7|
 
 # 4. **Data Strucutres**
 
@@ -371,4 +376,75 @@ max_heap_insert(a, key):
   a.size += 1
   a[a.size] = -inf
   heap_increase_key(a, a.size, key)
+```
+
+## 5.7. **Day 7 [10/04/2022]**
+Today I revised quick sort algorithm.<br>
+Coremen goes in really dept for quick sort and explains all possible cases for it.<br>
+However I have only read till randomised quick sort as I found out that is it suffecient enough for me now.
+
+### 5.7.1. **Quick Sort**
+Quick Sort is one of the most used and most preffered sorting algithm beacause when implemented properly, It have an time complexity of O(nlogn) which is similar to merge sort and heap sort but in this case the constant coffecient is really small beating heap sort and it is an in place sorting algorihtm hence only takes O(1) auxilary space beating merge sort.
+
+Quick Sort is based on the divide and conquer paradigm.<br> 
+In this the array A[p..r] is divided into two partitions A[p..q-1] and A[q+1..r] such that all the elements in the partition A[p..q-1] are <= to A[q] and all the elements in partition A[q+1..r] are > A[q] and the item A[q] is termed as the pivot.
+
+The recurrence for quick sort best case is:
+```
+T(n) = 2T(n/2) + O(n)
+```
+
+> Note: The algorithm mentioned in this doc are 1 based indexing while implemented in on 0 based indexing in the Algos directory. 
+
+Algo 
+```
+quicksort(A, p, r) ->
+  if p < r:
+    q = partition(A, p, r)
+    quicksort(A, p, q-1)
+    quicksort(A, q+1, r)
+
+```
+
+Here the method Partition have Θ(n) time complexity.
+
+Algo for Partition
+
+```
+partition(A, p, r) ->
+  key = A[r]
+  j = p
+  
+  while j < r:
+    j += 1
+    if A[j] <= key:
+      i += 1
+      swap(A, i, j)
+  swap(A, i+1, r)
+  return i+1 
+```
+
+### 5.7.2. **Time complexity**
+The time complexity of quick sort for an average and best case is O(nlogn), while for the worst case is O(n^2).
+
+The worst case of quick sort occur when the input array is already sorted order {reverse sorted will also result in worst case}.<br>
+This occur due to the partition method creating unbalanced partitions of the array. of size 1 and n-1, In which same will continue and will result in the following recurrence.
+```
+T(n) = T(n-1) + O(n)
+```
+Which when solved result in O(n^2) complexity.<br>
+
+Here when facing a problem of sorting in which the array is in partially sorted order **Insertion sort** will be more preferable resulting in faster sorting than quick sort.
+
+### 5.7.3. **Randomised Quick sort**
+Randomised quick sort aims to minimize the possiblity of worst case for quick sort by randomly chosing the pivot from the array. Hence even in the sorted input the chances of partition method creating more balanced partitions incresed resulting in lesser time complexity.
+
+Algo:
+```
+randomised_quicksort(A, p, r)->   
+  i = random(p, r)
+  swap(A, i, r)
+  q = partition(A, p, r)
+  randomised_quicksort(A, p, q-1)
+  randomised_quicksort(A, q+1, r)
 ```

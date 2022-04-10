@@ -29,7 +29,10 @@ def item_counter(items: List[Any]) -> Dict:
     return item_count
 
 class priority_queue(Heap):
-
+    '''
+    This is an implementation of max priority queue.
+    Using the implementation of max heap as parent class.
+    '''
     def __init__(self, array: List[int]) -> None:
         super().__init__(array)
     
