@@ -59,6 +59,11 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
     - [5.7.1. **Quick Sort**](#571-quick-sort)
     - [5.7.2. **Time complexity**](#572-time-complexity)
     - [5.7.3. **Randomised Quick sort**](#573-randomised-quick-sort)
+  - [5.8. **Day 8 [11/04/2022]**](#58-day-8-11042022)
+    - [5.8.1. **Comparison sorts**](#581-comparison-sorts)
+    - [5.8.2. **Lower bound for comparison sort.**](#582-lower-bound-for-comparison-sort)
+    - [5.8.3. **Counting Sort**](#583-counting-sort)
+    - [5.8.4. **Radix sort**](#584-radix-sort)
   
 
 # 3. **Algorithms**
@@ -70,6 +75,8 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
 | Maximum Subarray Recusive | O(nlog(n))   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
 | Maximum Subarray Linear | O(n)   |O(1)   | [Maximum Subarray](./Algos/MaximumSubarray.py)  |Day3|
 | Quick Sort | O(nlog(n))   |O(1)   | [Quick Sort](./Algos/quicksort.py)  |Day7|
+| Counting Sort | O(n)   |O(n)   | [Counting Sort](./Algos/countingSort.py)  |Day8|
+| Radix Sort | O(n*d*))   |O(1)   | [Quick Sort](./Algos/radixSort.py)  |Day8|
 
 # 4. **Data Strucutres**
 
@@ -425,7 +432,7 @@ partition(A, p, r) ->
 ```
 
 ### 5.7.2. **Time complexity**
-The time complexity of quick sort for an average and best case is O(nlogn), while for the worst case is O(n^2).
+The time complexity of quick sort for an average and best case is O(nlogn), while for the worst case is O(n²).
 
 The worst case of quick sort occur when the input array is already sorted order {reverse sorted will also result in worst case}.<br>
 This occur due to the partition method creating unbalanced partitions of the array. of size 1 and n-1, In which same will continue and will result in the following recurrence.
@@ -448,3 +455,82 @@ randomised_quicksort(A, p, r)->
   randomised_quicksort(A, p, q-1)
   randomised_quicksort(A, q+1, r)
 ```
+
+## 5.8. **Day 8 [11/04/2022]**
+Today I started the chapter 8 **Sorting in Linear time**
+
+### 5.8.1. **Comparison sorts**
+
+All the sorting algorithm I have learned or revised till now are comparison sorting algotihm, as they use comparison to find the order of elements in the array.
+
+### 5.8.2. **Lower bound for comparison sort.**
+
+The lower bound of all the comparsion sort will be of Ω(nlogn). This can be proved via decision tree.<br>
+In the decision tree at every node a comparison is made to find the relative order of the item [This is only for decision tree of comparision sort.]<br>
+See image below for better understanding.
+
+![Decision tree for comparision sort](./images/decision-tree-insertion-sort.jpg)
+
+The number of leafs of the tree are the total possible permutation of the input array.
+The time taken to sort the input will be equall to the time taken to make h comparisions in the tree where h is the height of the node having reachable leaf
+
+Now, Suppose there are n intergers to be sorted using comparison sort. So there will be an total of n! possible permutation of the input.
+
+Let us assume that the decision tree for this input have and height of h.<br>
+Since a tree of height h have 2ʰ leafs and all the leafs are a upper bound on total possible permutations 
+```
+n! <= 2ʰ
+Taking log both the side.
+
+log(n!) >= h 
+h <= log(n!)
+h <= Ω(nlog(n)) : This is by the equation 3.19 on page 58 in the book.
+```
+
+Hence any sorting algorithm have an lower bound of Ω(nlog(n)) the constant may change but the boundation will be there.
+
+### 5.8.3. **Counting Sort**
+
+Counting sort is an non comparision sorting algorithm which assumes that the input are integer only and that they are in range 0 to n. If both the assumptions correct than the counting sort can sort an array in O(n) time.
+
+It does this by couting the number of item less that i and using this value it find the correct index of item.
+
+Counting sort have time complexity of O(n) and have space complexity of O(n) as well.
+It is also an stable sorting algorithm.
+
+Algo:
+
+```
+counting_sort(A, b, k) -> 
+  Create a new array of length k and initialize it with 0 at every index.
+
+  for item in A:
+    C[A] += 1
+  
+  for i in 2 to k:
+    C[i] += C[i-1]
+  
+  for i in from A.length to 1:
+    b[C[A[i]]] = A[i]
+    C[A[i]] -= 1
+
+```
+
+### 5.8.4. **Radix sort**
+Similar to counting sort radix sort is also an non comparision based sorting algoritm.
+
+This algorithm is used to sort keys having d digits by using an stable sort.<br>
+It sort the keys by first sorting the digits having lower priority then the digits have higher priority and soo on.
+
+Alog:
+
+```
+radix_sort(A,d):
+  for i for 1 to d:
+    use any stable sort for sorting A by the digits at i
+```
+
+The sorting algotihtm can also be used to sort the dates by first sorting the day then month and in last by year.
+
+The time complexity of radix sort is O(d*n) where d is the numbers of digits and n is the number of items.
+It require a stable to maintaing the relative ordering of similar keys.
