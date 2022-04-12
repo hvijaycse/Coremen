@@ -64,6 +64,12 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
     - [5.8.2. **Lower bound for comparison sort.**](#582-lower-bound-for-comparison-sort)
     - [5.8.3. **Counting Sort**](#583-counting-sort)
     - [5.8.4. **Radix sort**](#584-radix-sort)
+  - [5.9. **Day 9 [12/04/2022]**](#59-day-9-12042022)
+    - [5.9.1. **Bucket Sort**](#591-bucket-sort)
+    - [5.9.2. **Iᵗʰ order statistics**](#592-iᵗʰ-order-statistics)
+      - [5.9.2.1. **Sorting**](#5921-sorting)
+      - [5.9.2.2. **Quick Select**](#5922-quick-select)
+      - [5.9.2.3. **Partition**](#5923-partition)
   
 
 # 3. **Algorithms**
@@ -534,3 +540,87 @@ The sorting algotihtm can also be used to sort the dates by first sorting the da
 
 The time complexity of radix sort is O(d*n) where d is the numbers of digits and n is the number of items.
 It require a stable to maintaing the relative ordering of similar keys.
+
+## 5.9. **Day 9 [12/04/2022]**
+
+### 5.9.1. **Bucket Sort**
+Bucket sort assumes that the input is drawn form an uniform distribution and has an average running time of O(n).
+Like counting sort bucket sort is fast as it assume something about the input.
+
+Bucket sort divide the interval [01) into n equall-sized sub intervals, or buckets and hten distributes the n input numbers into teh buckets. Since the inputs are uniformy distributed over [0,), we don not expect many numbers to fall into same bucket.
+
+To produce the output, we simply sort the numbers in each bucket and then go throught bucket in order, listing the elements in each.
+
+Algo:
+```
+bucket_sort(A) ->
+  n = A.length
+  B = [ list() for i from 1 to n] // B is an list containing n empty lists.
+
+  for i from 1 to n:
+    B[n*A[i]].add(A[i])
+  
+  for i from i to n:
+    sort the list B[i] using insertion sort.
+  
+  combine all the list of B together to create the sorted list.
+```
+
+This sorting is quite different as it makes many assumption about the input, but the anyu input can be easily converted into the required input by dividing the elements by maxuimum of elements + 1.
+and after sorting again multiply the sorted elements by (maximum + 1)
+
+### 5.9.2. **Iᵗʰ order statistics**
+The iᵗʰ order statistics is a problem in which we have to return the iᵗʰ smallest element from the input elements.
+
+There are 3 approch for this problem
+
+#### 5.9.2.1. **Sorting**
+The very simple and and easy way to solve this problem is to simply sort the elements in increasing order and return the iᵗʰ index element.
+
+This is pretty straight forward solution and has a time complexity of O(nlogn). Assuimg comparion based sort.
+
+Algo
+```
+select(A, i) ->
+  sort the array A
+  return A[i]
+```
+
+But we can do better and solve this problem in O(n) time complexity.
+
+#### 5.9.2.2. **Quick Select**
+
+This approch is based on the divide and conquer paradigm and is heavily inspired by the quick sort, hence it is also known as quick select.
+
+Like in quick sort as we parition the array into two part using the Parition method. But unlike quick sort we only recursivley call on one partition based on the partition index.
+
+Algo
+```
+quick_select(A, s, e, k) ->
+  if s == e:
+    return A[s]
+  
+  q = Partition(A, s, e)
+  i = q-s+1
+  if k == i:
+    return A[k]
+
+  if k > i :
+    return quick_select(A, q+1, e, k-i) 
+  else:
+    return quick_select(A, s, q-1, k)
+```
+
+#### 5.9.2.3. **Partition**
+This method similar to quick select divide the input into partition to find the iᵗʰ order statistics.
+
+Its Algo According to book.
+
+```
+partition_select(A, i):
+  1. Divide the n elemets into partitons of size n//5 + 1 is n % 5 != 0.
+  2. Find the median of all the partitons.
+  3. Pick the median from the median of all the partitions let it be x.
+  4. Partiton the input arrays around the medians of the medians using the Partition method of quick sort. Let it be j.
+  5. if j = i return x. otherwise slect recursively to find the iᵗʰ smallest element on the low side is i < k or the (i-k)ᵗʰ smallest element on the higher side if i > k
+```
