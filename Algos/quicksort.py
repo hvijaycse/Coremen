@@ -76,6 +76,6 @@ def quickSort(
         quickSort(nums, q+1, end)
 
 if __name__ == "__main__":
-    nums = [5,4,3,2,1]
+    nums = [5,4,3,2,1,32,4,5,6,3,2]
     quickSort(nums)
     print(nums)

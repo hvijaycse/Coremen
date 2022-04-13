@@ -70,6 +70,11 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
       - [5.9.2.1. **Sorting**](#5921-sorting)
       - [5.9.2.2. **Quick Select**](#5922-quick-select)
       - [5.9.2.3. **Partition**](#5923-partition)
+  - [5.10. **Day 10 [13-03/2022]**](#510-day-10-13-032022)
+    - [5.10.1. **Data Strucutres**](#5101-data-strucutres)
+      - [5.10.1.1. **Common methods**](#51011-common-methods)
+    - [5.10.2. **Elementary Data Structure**](#5102-elementary-data-structure)
+      - [5.10.2.1. **Stacks**](#51021-stacks)
   
 
 # 3. **Algorithms**
@@ -83,6 +88,8 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
 | Quick Sort | O(nlog(n))   |O(1)   | [Quick Sort](./Algos/quicksort.py)  |Day7|
 | Counting Sort | O(n)   |O(n)   | [Counting Sort](./Algos/countingSort.py)  |Day8|
 | Radix Sort | O(n*d*))   |O(1)   | [Quick Sort](./Algos/radixSort.py)  |Day8|
+| ith order statistic | O(nlogn))   |O(1)   | [sorting Select](./Algos/ith_order_statistics.py)  |Day9|
+| Quick Select | O(logn))   |O(1)   | [Quick Select](./Algos/quick_select.py)  |Day9|
 
 # 4. **Data Strucutres**
 
@@ -623,4 +630,68 @@ partition_select(A, i):
   3. Pick the median from the median of all the partitions let it be x.
   4. Partiton the input arrays around the medians of the medians using the Partition method of quick sort. Let it be j.
   5. if j = i return x. otherwise slect recursively to find the iᵗʰ smallest element on the low side is i < k or the (i-k)ᵗʰ smallest element on the higher side if i > k
+```
+
+## 5.10. **Day 10 [13-03/2022]**
+
+Today I started the part III of the book.<br>
+Today I was not able to make much progress, due to some personal tasks.<br>
+But will make sure that I cover that up tommorow.
+
+### 5.10.1. **Data Strucutres**
+
+Basically A data structure is an way to organize and store data in such a way that it provide and effecient, east and fast method to access and manipulate the data.
+
+#### 5.10.1.1. **Common methods**
+Some common methods for Data strucutre are.
+1. Search(x): Search the item x in the dataset
+2. Insert(x): Insert the item x in the dataset.
+3. Delete(x): Delete the item x in the dataset.  
+4. Minimum(): Return the item with minimum value from the dataset.
+5. Maximum(): Return the item with maximum value from the dataset.
+6. Succesor(x): Return the item from to the next larger item than x from dataset.
+7. Predecessor(x): Return the item from to the next smaller item that x from dataset.
+   
+### 5.10.2. **Elementary Data Structure**
+
+#### 5.10.2.1. **Stacks**
+Similar to an array stacks are linear data stucture in which all the operations are performed on one end, known as top of the stack.
+Stack implements LIFO policy (Last in first out)
+
+Stacks support 3 operations.
+1. Is_empty(): Return true if stack is empty
+2. Is_full(): Return true if stack is full.
+3. Push(x): Add item x in the stack.
+4. Pop(): Removes and return the topmost element from the stack.
+   
+Algo:
+
+> Note: 
+> >Here I am assuming that the method does not require pointer to stack object on which operations are performed, this is possible by make a class stack and creating method in that class. This is done in python using the self keyword to access the currrent object but for simplicity I have removed it from the algorithm.
+
+
+```
+Algoritm to implement stack methods.
+
+is_empty():
+  if stack.top = 0
+    return true
+  return False
+
+is_full():
+  if stack.top() = stack.length
+    return true
+  return false
+
+push(x):
+  if is_full():
+    error "stack overflow"
+  stack.top += 1
+  stack[stack.top] = x
+
+pop():
+  if is_empty():
+    error " Stack underflow"
+  stack.top -= 1
+  return stack[stack.top+1]
 ```
