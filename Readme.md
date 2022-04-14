@@ -75,6 +75,7 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
       - [5.10.1.1. **Common methods**](#51011-common-methods)
     - [5.10.2. **Elementary Data Structure**](#5102-elementary-data-structure)
       - [5.10.2.1. **Stacks**](#51021-stacks)
+      - [5.10.2.2. **Queue**](#51022-queue)
   - [5.11. **Day 11 [14/04/2022]**](#511-day-11-14042022)
     - [5.11.1. **Elementary Data Structure**](#5111-elementary-data-structure)
       - [5.11.1.1. **Linked List**](#51111-linked-list)
@@ -697,6 +698,54 @@ pop():
     error " Stack underflow"
   stack.top -= 1
   return stack[stack.top+1]
+```
+
+#### 5.10.2.2. **Queue**
+Similar to array and stacks queue is also a linear data structure.<br>
+But unlike stack the operations in stack are performed at two different ends, knows as head and tail of the queue.
+
+When an element is added in the queue it is added at the tail and when it is remove it is removed from the head.<br>
+Queue follows FIFO policy (First in first out)
+
+Method of queue are:
+1. Is_empty(): Return true if queue is empty
+2. Is_full(): Return true if queue is full.
+3. Enqueue(x): Add item x in the queue and increase the tail.
+4. Dequeue(): Retunr the item at head and then increase the head.
+
+Algos:
+```
+if_empty()->
+  if queue.head == queue.tail:
+    return True
+  else:
+    return False
+
+is_full() ->
+  if tail + 1 == head:
+    return True
+  else:
+    return False
+enqueue(x):
+  if is_full():
+    error "Queue overflow"
+  else:
+    queue[queue.tail] = x
+    if queue.tail == queue.length:
+      queue.tail = 1
+    else:
+      queue.tail += 1
+  
+dequeue():
+  if is_empty():
+    error "is empty"
+  else:
+    item = queue[queue.head]
+    if queue.head == queue.length:
+      queue.head = 1
+    else:
+       queue.head += 1
+    return item.
 ```
 
 ## 5.11. **Day 11 [14/04/2022]**
