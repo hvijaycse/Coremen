@@ -102,6 +102,7 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
 |---------|---------|---------|
 |Heap     | [max heap](DataStructure/Heap.py)       | Day 5        |
 |Priority Queue     | [max priority queue](DataStructure/PriorityQueue.py)       | Day 6        |
+|Stacks     | [Stacks](DataStructure/Stacks.py)       | Day 10        |
 
 # 5. **Learning from Coremen book.**
 
@@ -714,6 +715,9 @@ Method of queue are:
 4. Dequeue(): Retunr the item at head and then increase the head.
 
 Algos:
+
+> Note:
+> > This algo implements a queue of **at most n-1** elemets using the a n sized array.
 ```
 if_empty()->
   if queue.head == queue.tail:
@@ -722,11 +726,13 @@ if_empty()->
     return False
 
 is_full() ->
-  if tail + 1 == head:
+  if (head == 1 and tail == queue.length) or (tail + 1 == head):
     return True
   else:
     return False
-enqueue(x):
+
+
+enqueue(x) ->
   if is_full():
     error "Queue overflow"
   else:
@@ -736,7 +742,7 @@ enqueue(x):
     else:
       queue.tail += 1
   
-dequeue():
+dequeue() ->
   if is_empty():
     error "is empty"
   else:
