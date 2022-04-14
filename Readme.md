@@ -75,9 +75,9 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
       - [5.10.1.1. **Common methods**](#51011-common-methods)
     - [5.10.2. **Elementary Data Structure**](#5102-elementary-data-structure)
       - [5.10.2.1. **Stacks**](#51021-stacks)
-  - [**Day 11 [14/04/2022]**](#day-11-14042022)
-    - [**Elementary Data Structure**](#elementary-data-structure)
-      - [**Linked List**](#linked-list)
+  - [5.11. **Day 11 [14/04/2022]**](#511-day-11-14042022)
+    - [5.11.1. **Elementary Data Structure**](#5111-elementary-data-structure)
+      - [5.11.1.1. **Linked List**](#51111-linked-list)
   
 
 # 3. **Algorithms**
@@ -699,13 +699,13 @@ pop():
   return stack[stack.top+1]
 ```
 
-## **Day 11 [14/04/2022]**
+## 5.11. **Day 11 [14/04/2022]**
 
 Today I continued with elementary data structure and revised linked list.
 
-### **Elementary Data Structure**
+### 5.11.1. **Elementary Data Structure**
 
-#### **Linked List**
+#### 5.11.1.1. **Linked List**
 Same as array and stacks and queue a linked list is also an linear data structure.
 But unlike array where the linear order is determine by the indices, here it is determine by the pointers.
 
