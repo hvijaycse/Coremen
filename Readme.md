@@ -70,11 +70,14 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
       - [5.9.2.1. **Sorting**](#5921-sorting)
       - [5.9.2.2. **Quick Select**](#5922-quick-select)
       - [5.9.2.3. **Partition**](#5923-partition)
-  - [5.10. **Day 10 [13-03/2022]**](#510-day-10-13-032022)
+  - [5.10. **Day 10 [13/04/2022]**](#510-day-10-13042022)
     - [5.10.1. **Data Strucutres**](#5101-data-strucutres)
       - [5.10.1.1. **Common methods**](#51011-common-methods)
     - [5.10.2. **Elementary Data Structure**](#5102-elementary-data-structure)
       - [5.10.2.1. **Stacks**](#51021-stacks)
+  - [**Day 11 [14/04/2022]**](#day-11-14042022)
+    - [**Elementary Data Structure**](#elementary-data-structure)
+      - [**Linked List**](#linked-list)
   
 
 # 3. **Algorithms**
@@ -632,7 +635,7 @@ partition_select(A, i):
   5. if j = i return x. otherwise slect recursively to find the iᵗʰ smallest element on the low side is i < k or the (i-k)ᵗʰ smallest element on the higher side if i > k
 ```
 
-## 5.10. **Day 10 [13-03/2022]**
+## 5.10. **Day 10 [13/04/2022]**
 
 Today I started the part III of the book.<br>
 Today I was not able to make much progress, due to some personal tasks.<br>
@@ -694,4 +697,59 @@ pop():
     error " Stack underflow"
   stack.top -= 1
   return stack[stack.top+1]
+```
+
+## **Day 11 [14/04/2022]**
+
+Today I continued with elementary data structure and revised linked list.
+
+### **Elementary Data Structure**
+
+#### **Linked List**
+Same as array and stacks and queue a linked list is also an linear data structure.
+But unlike array where the linear order is determine by the indices, here it is determine by the pointers.
+
+In simple term a linked list is a sequence of nodes connected by pointer to each other.
+
+There are multiple type of linkedlist such as Single Linked List, Double Linked list, Circular linked list and some more.
+
+The method implementation for operations on them differs from one another, for sake of simplicity I am showing only Singly linked list implementations.
+
+
+Methods for Linked List:
+1. List_search(x: val): return the node having key x from the linked list.
+2. Insert(x: val): Insert a new node with value x at the begining of the List.
+3. Delete(n: node): Remove node n from the list.
+   
+Algorithm for single Linked List.
+```
+Basic representation of node object.
+
+Node:
+  val = 0
+  next = None
+
+list_search(x):
+  
+  while x != None and x.val != x:
+    x = x.next
+  
+  return x
+
+insert(x):
+  x.next = list.head
+  list.head = x
+
+delete(x):
+  if list.head == None:
+    error "List is empty"
+  
+  if list.head == x:
+    list.head = list.head.next
+  else:
+    temp = list.head
+    while temp and temp.next != x:
+      temp = temp.next
+
+    temp.next = x.next
 ```
