@@ -79,6 +79,7 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
   - [5.11. **Day 11 [14/04/2022]**](#511-day-11-14042022)
     - [5.11.1. **Elementary Data Structure**](#5111-elementary-data-structure)
       - [5.11.1.1. **Linked List**](#51111-linked-list)
+  - [**Day 12 [15/04/2022]**](#day-12-15042022)
   
 
 # 3. **Algorithms**
@@ -808,3 +809,8 @@ delete(x):
 
     temp.next = x.next
 ```
+
+
+## **Day 12 [15/04/2022]**
+Completed Elementary data structures and started Hashing chapter.<br>
+Was unable to update the learnings :( Will update this tommorow.
