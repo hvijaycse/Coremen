@@ -80,6 +80,7 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
     - [5.11.1. **Elementary Data Structure**](#5111-elementary-data-structure)
       - [5.11.1.1. **Linked List**](#51111-linked-list)
   - [5.12. **Day 12 [15/04/2022]**](#512-day-12-15042022)
+  - [5.13. **Day 13 [17/04/2022]**](#513-day-13-17042022)
   
 
 # 3. **Algorithms**
@@ -814,3 +815,13 @@ delete(x):
 ## 5.12. **Day 12 [15/04/2022]**
 Completed Elementary data structures and started Hashing chapter.<br>
 Was unable to update the learnings :( Will update this tommorow.
+
+## 5.13. **Day 13 [17/04/2022]**
+Completed the binary tree and n children tree implemenation in the book.<br>
+Solved the problems in the book for the tree.
+
+Started Hashing chapter on the book.<br>
+Completed the direct hashing and started to learn the limitation of the normal hash table, what is collison, how to minimize it and how to resolve it by chaining.
+
+Not able to update the Readme and algos properly but will update in future after 28 regularly. 
+
