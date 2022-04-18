@@ -81,6 +81,22 @@ This time I am maintaining this repo, this serves multiple purposes, some of the
       - [5.11.1.1. **Linked List**](#51111-linked-list)
   - [5.12. **Day 12 [15/04/2022]**](#512-day-12-15042022)
   - [5.13. **Day 13 [17/04/2022]**](#513-day-13-17042022)
+  - [5.14. **Day 14 [18/04/2022]**](#514-day-14-18042022)
+    - [5.14.1. **Hashing**](#5141-hashing)
+    - [5.14.2. **A good hashing functions.**](#5142-a-good-hashing-functions)
+    - [5.14.3. **Methods for hashing**](#5143-methods-for-hashing)
+      - [5.14.3.1. **The division methiod**](#51431-the-division-methiod)
+      - [5.14.3.2. **Multiplication method**](#51432-multiplication-method)
+      - [5.14.3.3. 5.14.3.3  **Universal Hashing** $\star$](#51433-51433--universal-hashing-star)
+    - [5.14.4. **Open addressing**](#5144-open-addressing)
+      - [5.14.4.1. **Methods for Open addressing**](#51441-methods-for-open-addressing)
+        - [5.14.4.1.1. **Insert**](#514411-insert)
+        - [5.14.4.1.2. **Search**](#514412-search)
+        - [5.14.4.1.3. **Delete**](#514413-delete)
+      - [5.14.4.2. **Probing**](#51442-probing)
+        - [5.14.4.2.1. **Linear Probing**](#514421-linear-probing)
+        - [5.14.4.2.2. **Quadratinc probing**](#514422-quadratinc-probing)
+        - [5.14.4.2.3. **Double Hashing**](#514423-double-hashing)
   
 
 # 3. **Algorithms**
@@ -825,3 +841,163 @@ Completed the direct hashing and started to learn the limitation of the normal h
 
 Not able to update the Readme and algos properly but will update in future after 28 regularly. 
 
+## 5.14. **Day 14 [18/04/2022]**
+Completed the hasing chapter. Skipped the theroem, proof of universal hashing and Perfect hashing completly.
+
+### 5.14.1. **Hashing**
+Hashing is a process of taking an input and converting it into another value. The hashing function should always convert the key k into same value, but the hashing of two different keys can result in same output.
+
+
+### 5.14.2. **A good hashing functions.**
+A good hashing function is one which is equally likely to hash a key k into any of the m slots.
+
+### 5.14.3. **Methods for hashing**
+There are 3 methods for creating a hash function.
+> Note:
+> > The below methods assume that the universe of key is the set of N = {0,1,2,...} natural numbers.
+> > So in case of using a string or any other object one should convert them to natutal numbers.
+
+
+#### 5.14.3.1. **The division methiod**
+
+In the division method for creating a hash function, we map the key k into one of the m slots by taking remainder of k divided by m.
+
+```
+h(k) = k mod m
+```
+
+While using the division method, m should not be power of 2, for eg is m = 2ᵖ as the resulting hashing function retun the p lowest order bits of key k.
+
+#### 5.14.3.2. **Multiplication method**
+In this method we first multiply the key **k** with a contant **A** which is in range (0, 1) and extract the fractional part of it. In last multiply that with m and and take the floor of it.
+
+```
+h(k) = floor( m * (Ak mod 1) )
+```
+
+In this the value if m is not critical and we generally shoose it to be power of 2.
+
+Although this method works for any contanst A, it works better with some values than with others. The optimal choice depends on the characterstics of the data.
+
+Knuth suggested that:
+
+$A =  (\sqrt{5} - 1 )/ 2$
+
+
+#### 5.14.3.3. 5.14.3.3  **Universal Hashing** $\star$
+
+If someone chooses the keys to be hashed by some fixed hashing function then the advesary ccn can choose n keys that all hash to the same slot resulting in average retrival time of $\theta(n)$ .
+Any fixed hashing function is vulnerable to these worst case behaviour.
+
+
+The only way to improve this situation is to choose the hash function randomly in a way that is independent of the keys that are actually going to be stored. This approch is ***universal hashing***
+
+In this we first we choose the hash function randomly from specific designed class of functions. As result the algorithm will behave differently on each execution even for the same input, guaranteeing good average-case performance.
+
+### 5.14.4. **Open addressing**
+
+In this all the elements occupy the hash table table itself. Rather than storing the pointer to chained linked list, It store either the element or NIL/None.
+
+Since in this the number of elements m can never exceed the number of slots of the hash table the $\alpha \leq 1$.
+
+To perform operation using open addressing, we successively examine or probe the hash table until the complete the operation or end of the has table.
+
+So instead of begining from the 0, 1, ... m-1. The initial start of the sequence depends on the key being used<br>
+To determine which slot to probe first, we extend the hash function to include the probe number starting from zero.
+
+
+#### 5.14.4.1. **Methods for Open addressing**
+Since open addressing is also an type of hash table, it consists of 3 main mehtods. 
+
+##### 5.14.4.1.1. **Insert**
+This method is used to insert an item with key k in the hash table.
+
+```
+Insert(k) -> 
+  i = 0
+  while i < m:
+    j = hash(k, i)
+    if table[j] = None or Deleted:
+      T[j] = k
+      return j
+    i += 1
+  error "hash table overflow'
+
+```
+
+##### 5.14.4.1.2. **Search**
+This method is used to retrive an item with key k from the hash table. In this since probe sequence of the search is same as insert we can stop the search if we find None at any probe location.
+
+```
+Search(k) -> 
+   i = 0 
+   j = hash(k, i)
+   while i < m & table[j] != None:
+    if table[j] == k:
+      return j
+    i += 1
+    j = hash(k, i)
+
+  return None
+```
+
+##### 5.14.4.1.3. **Delete**
+Implementing delete in open addressing is difficult as when we deleted the key k we simply cannot mark that slot as None, as while performing an search operation for another key this slot might come first and seeking None in this slot will result in unfavourable outcomes.
+
+This problem can be easily resolved with using a special item while deleting the key, rather than putting none at the location we will put Deleted at that location since the search only stops at None it will skip over this location, however we need to implement insert in such a way that both None and Deleted marked slots will be used.
+
+```
+Delete(k) ->
+  i = 0
+
+  while i < m:
+    j = hash(k, i)
+    if table[j] == k:
+      table[j] = Deleted
+      return j 
+    i += 1
+  error "key not in hash table"
+```
+
+#### 5.14.4.2. **Probing**
+Probing the way to genereate the sequence of indexes for a key k such that the starting index of the sequence is decided by key and the increment for the next in the sequence may be decided by it.
+
+There are three ways to generate probing sequence
+
+##### 5.14.4.2.1. **Linear Probing**
+With the help of any hashing fucntion g which generate output in range 0, 1, 2, ..., m-1. We will term such function as auxilary hash function
+
+We can create a linear probing function h in this way.
+
+$$
+h(k, i) = (g(k) + i) mod m
+$$
+
+Thus for i=0 the staring index of the probe will be the output of function g, this will keep on increasing by 1 until the end of array after which with the help of mod function it will from 0 till g(k) - 1
+
+Linear probing is easy to implement but suffers from a problem known as primary clustering. Long run of linear probing result in longer run of the probe sequence and hence resulitng in the average search time increased.
+
+##### 5.14.4.2.2. **Quadratinc probing**
+
+Similar to linear probing the quadratic probe function is of the form 
+
+$$
+h(k, i) = (g(k) + c₁*i + c₂ *i ^2) \mod m
+$$
+
+
+In this the starting index of the sequence is also decided by the function g but the next index in the sequence is decided by the quadratic equation.
+
+In this if two keys generate the same ouput from the function g then the probe sequence will be same for both the keys. This is knows as secondary clustering. 
+
+##### 5.14.4.2.3. **Double Hashing**
+This utilize two auxilary functions g and g`.<br>
+This offers one of the best methods available for open addressing. 
+
+The double probe hash function is of form 
+
+$$
+h(k, i) = \ (  g(k) + i*g`(k)) \mod m
+$$
+
+Similar to linear and quadratic probing the starting index of the sequence is decided by the function g but the next index is depends on both i and g` function, hence even for two keys having same output from method g they highly unlikely to result in same sequence.
